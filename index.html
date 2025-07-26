@@ -135,15 +135,15 @@
   <div class="container">
     <h2>🔎 Enter Certificate Number</h2>
     <div class="input-group">
-      <input type="text" id="certInput" placeholder="e.g., HSE2025-001" />
+      <input type="text" id="certInput" placeholder="e.g., HSE****" />
       <button onclick="verifyCertificate()">Verify</button>
     </div>
 
     <div class="dashboard" id="dashboard">
       <h2>🎓 Verified Certificate Dashboard</h2>
-      <div class="info-row"><strong>👤 Name:</strong> <span id="studentName"></span></div>
-      <div class="info-row"><strong>📚 Course:</strong> <span id="courseName"></span></div>
-      <div class="info-row"><strong>📅 Issue Date:</strong> <span id="issueDate"></span></div>
+      <div class="info-row"><strong> Name:</strong> <span id="studentName"></span></div>
+      <div class="info-row"><strong> Course:</strong> <span id="courseName"></span></div>
+      <div class="info-row"><strong> Issue Date:</strong> <span id="issueDate"></span></div>
 
       <div class="cert-image-container">
         <img id="certificateImage" class="cert-image" src="" alt="Certificate Image">
@@ -156,13 +156,6 @@
         <img src="badge-hse.png" alt="HSE Verified">
         <img src="badge-osha.png" alt="OSHA Certified">
       </div>
-
-      <div class="qr-code">
-        <p><strong>📲 Scan to Verify:</strong></p>
-        <img id="qrCode" src="" alt="QR Code">
-      </div>
-    </div>
-  </div>
 
   <footer>
     &copy; 2025 HSE Institute of UK. All rights reserved.
@@ -203,7 +196,7 @@
         qrCode.src = data.qr;
         dashboard.style.display = "block";
       } else {
-        alert("❌ Certificate not found. Please check the number.");
+        alert(" Certificate not found. Please check the number.");
         dashboard.style.display = "none";
       }
     }
