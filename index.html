@@ -41,19 +41,26 @@
     }
     input[type="text"] {
       flex: 1;
-      padding: 12px;
-      font-size: 16px;
+      padding: 14px 16px;
+      font-size: 18px;
       border-radius: 8px;
-      border: 2px solid #ccc;
+      border: 2px solid #004080;
+      outline: none;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus {
+      border-color: #0066cc;
     }
     button {
       background-color: #004080;
       color: white;
       border: none;
-      padding: 12px 20px;
+      padding: 14px 24px;
       border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
     button:hover {
       background-color: #0066cc;
@@ -65,7 +72,6 @@
       border-left: 6px solid #004080;
       padding: 30px;
       border-radius: 10px;
-      position: relative;
     }
     .dashboard h2 {
       color: #004080;
@@ -135,15 +141,15 @@
   <div class="container">
     <h2>🔎 Enter Certificate Number</h2>
     <div class="input-group">
-      <input type="text" id="certInput" placeholder="e.g., HSE****" />
+      <input type="text" id="certInput" />
       <button onclick="verifyCertificate()">Verify</button>
     </div>
 
     <div class="dashboard" id="dashboard">
       <h2>🎓 Verified Certificate Dashboard</h2>
-      <div class="info-row"><strong> Name:</strong> <span id="studentName"></span></div>
-      <div class="info-row"><strong> Course:</strong> <span id="courseName"></span></div>
-      <div class="info-row"><strong> Issue Date:</strong> <span id="issueDate"></span></div>
+      <div class="info-row"><strong>👤 Name:</strong> <span id="studentName"></span></div>
+      <div class="info-row"><strong>📚 Course:</strong> <span id="courseName"></span></div>
+      <div class="info-row"><strong>📅 Issue Date:</strong> <span id="issueDate"></span></div>
 
       <div class="cert-image-container">
         <img id="certificateImage" class="cert-image" src="" alt="Certificate Image">
@@ -157,6 +163,13 @@
         <img src="badge-osha.png" alt="OSHA Certified">
       </div>
 
+      <div class="qr-code">
+        <p><strong>📲 Scan to Verify:</strong></p>
+        <img id="qrCode" src="" alt="QR Code">
+      </div>
+    </div>
+  </div>
+
   <footer>
     &copy; 2025 HSE Institute of UK. All rights reserved.
   </footer>
@@ -168,12 +181,14 @@
         course: "WORK IT HEIGHT",
         date: "2023-07-15",
         image: "cert1.jpg",
+        qr: "https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://yourdomain.github.io/verify.html?cert=HSE2025-001"
       },
       "HSE2025-002": {
         name: "Ali Khan",
         course: "IOSH Managing Safely",
         date: "2025-07-20",
         image: "cert2.jpg",
+        qr: "https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://yourdomain.github.io/verify.html?cert=HSE2025-002"
       }
     };
 
@@ -196,7 +211,7 @@
         qrCode.src = data.qr;
         dashboard.style.display = "block";
       } else {
-        alert(" Certificate not found. Please check the number.");
+        alert("❌ Certificate not found. Please check the number.");
         dashboard.style.display = "none";
       }
     }
