@@ -2,220 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HSE Institute UK - Certificate Verification</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f7fa;
-    }
-    header {
-      background-color: #002f5f;
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: white;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    header img {
-      height: 60px;
-    }
-    h1 {
-      font-size: 24px;
-      margin-left: 10px;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 50px auto;
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.08);
-    }
-    .input-group {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 30px;
-    }
-    input[type="text"] {
-      flex: 1;
-      padding: 14px 16px;
-      font-size: 18px;
-      border-radius: 8px;
-      border: 2px solid #004080;
-      outline: none;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-      transition: border-color 0.3s ease;
-    }
-    input[type="text"]:focus {
-      border-color: #0066cc;
-    }
-    button {
-      background-color: #004080;
-      color: white;
-      border: none;
-      padding: 14px 24px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #0066cc;
-    }
-    .dashboard {
-      display: none;
-      margin-top: 20px;
-      background-color: #f9f9f9;
-      border-left: 6px solid #004080;
-      padding: 30px;
-      border-radius: 10px;
-    }
-    .dashboard h2 {
-      color: #004080;
-      margin-bottom: 20px;
-    }
-    .info-row {
-      margin: 10px 0;
-    }
-    .info-row strong {
-      color: #002f5f;
-    }
-    .cert-image-container {
-      position: relative;
-      margin-top: 20px;
-    }
-    .cert-image {
-      width: 100%;
-      max-height: 400px;
-      border-radius: 10px;
-      border: 2px solid #ccc;
-      object-fit: contain;
-    }
-    .verified-stamp {
-      position: absolute;
-      bottom: 15px;
-      right: 20px;
-      width: 120px;
-      animation: pulse 1.5s infinite;
-      opacity: 0.85;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.9; }
-      50% { transform: scale(1.1); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.9; }
-    }
-    .badges {
-      margin-top: 25px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    .badges img {
-      height: 60px;
-    }
-    .qr-code {
-      margin-top: 20px;
-    }
-    .qr-code img {
-      height: 120px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #666;
-      margin-top: 60px;
-      background-color: #e9eef3;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <header>
-    <img src="logo.png" alt="HSE Institute Logo">
-    <h1>Certificate Verification Portal</h1>
+    <div style="display: flex; align-items: center;">
+      <img src="logo.png" alt="HSE Logo" />
+      <h1>HSE Institute UK - Certificate Verification</h1>
+    </div>
   </header>
 
   <div class="container">
-    <h2>🔎 Enter Certificate Number</h2>
+    <h2>Enter Certificate Number</h2>
     <div class="input-group">
-      <input type="text" id="certInput" />
+      <input type="text" id="certificateNumber" placeholder="e.g., HSE2025-001" />
       <button onclick="verifyCertificate()">Verify</button>
     </div>
 
     <div class="dashboard" id="dashboard">
       <h2>🎓 Verified Certificate Dashboard</h2>
-      <div class="info-row"><strong>👤 Name:</strong> <span id="studentName"></span></div>
-      <div class="info-row"><strong>📚 Course:</strong> <span id="courseName"></span></div>
-      <div class="info-row"><strong>📅 Issue Date:</strong> <span id="issueDate"></span></div>
+      <div class="info-row">
+        <strong>👤 Name:</strong> <span id="studentName">Kaleem Ullah</span>
+      </div>
+      <div class="info-row">
+        <strong>📚 Course:</strong> <span id="courseName">WORK IT HEIGHT</span>
+      </div>
+      <div class="info-row">
+        <strong>🗓 Issue Date:</strong> <span id="issueDate">2023-07-15</span>
+      </div>
 
       <div class="cert-image-container">
-        <img id="certificateImage" class="cert-image" src="" alt="Certificate Image">
-        <img class="verified-stamp" src="verified.png" alt="Verified Stamp">
+        <img src="cert1.jpg" alt="Certificate" class="cert-image" />
+        <img src="verified-stamp.png" alt="Verified Stamp" class="verified-stamp" />
       </div>
 
       <div class="badges">
-        <img src="badge-cpd.png" alt="CPD Certified">
-        <img src="badge-iso.png" alt="ISO Approved">
-        <img src="badge-hse.png" alt="HSE Verified">
-        <img src="badge-osha.png" alt="OSHA Certified">
+        <img src="cpd.png" alt="CPD Certified" />
+        <img src="iso.png" alt="ISO Approved" />
+        <img src="hse.png" alt="HSE Verified" />
+        <img src="osha.png" alt="OSHA Certified" />
       </div>
 
       <div class="qr-code">
-        <p><strong>📲 Scan to Verify:</strong></p>
-        <img id="qrCode" src="" alt="QR Code">
+        <p>Scan to Verify</p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kaleemkhanzk674.github.io/certificate-verification-net/" alt="QR Code" />
       </div>
     </div>
   </div>
 
   <footer>
-    &copy; 2025 HSE Institute of UK. All rights reserved.
+    &copy; 2025 HSE Institute UK | All Rights Reserved
   </footer>
 
   <script>
-    const certificates = {
-      "HSE2025-001": {
-        name: "Kaleem Ullah",
-        course: "WORK IT HEIGHT",
-        date: "2023-07-15",
-        image: "cert1.jpg",
-        qr: "https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://yourdomain.github.io/verify.html?cert=HSE2025-001"
-      },
-      "HSE2025-002": {
-        name: "Ali Khan",
-        course: "IOSH Managing Safely",
-        date: "2025-07-20",
-        image: "cert2.jpg",
-        qr: "https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://yourdomain.github.io/verify.html?cert=HSE2025-002"
-      }
-    };
-
     function verifyCertificate() {
-      const input = document.getElementById("certInput").value.trim();
+      const certInput = document.getElementById("certificateNumber").value.trim();
       const dashboard = document.getElementById("dashboard");
-      const studentName = document.getElementById("studentName");
-      const courseName = document.getElementById("courseName");
-      const issueDate = document.getElementById("issueDate");
-      const certImage = document.getElementById("certificateImage");
-      const qrCode = document.getElementById("qrCode");
 
-      const data = certificates[input];
-
-      if (data) {
-        studentName.textContent = data.name;
-        courseName.textContent = data.course;
-        issueDate.textContent = data.date;
-        certImage.src = data.image;
-        qrCode.src = data.qr;
+      if (certInput === "HSE2025-001") {
         dashboard.style.display = "block";
       } else {
-        alert("❌ Certificate not found. Please check the number.");
         dashboard.style.display = "none";
+        alert("Certificate not found. Please check the certificate number.");
       }
     }
   </script>
-
 </body>
 </html>
